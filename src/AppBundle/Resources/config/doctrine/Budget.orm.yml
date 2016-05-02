@@ -1,0 +1,26 @@
+AppBundle\Entity\Budget:
+    type: entity
+    table: null
+    repositoryClass: AppBundle\Repository\BudgetRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+            column: title
+        value:
+            type: float
+            nullable: true
+            column: value
+        startDate:
+            type: date
+            column: start_Date
+        endDate:
+            type: date
+            column: end_Date
+    lifecycleCallbacks: {  }
