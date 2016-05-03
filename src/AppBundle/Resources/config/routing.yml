@@ -6,3 +6,8 @@ add_budget:
 add_initiative:
     path:     /addInitiative
     defaults: { _controller: AppBundle:Initiative:addInitiative }
+
+
+index:
+    path:     /
+    defaults: { _controller: AppBundle:Default:index }
