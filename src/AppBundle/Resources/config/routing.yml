@@ -1,11 +1,3 @@
-app:
-    resource: "@AppBundle/Controller/"
-    type:     annotation
-
-_login:
-    path:      /
-    defaults:  { _controller: AppBundle:Default:login }
-
 
 add_budget:
     path:     /addBudget
