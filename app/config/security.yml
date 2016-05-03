@@ -27,3 +27,4 @@ security:
         - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/addBudget, role: ROLE_USER }
         - { path: ^/addInitiative, role: ROLE_USER }
+        - { path: ^/, role: ROLE_USER }
