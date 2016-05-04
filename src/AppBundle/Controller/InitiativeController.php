@@ -33,11 +33,24 @@ class InitiativeController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($initiative);
-            $em->flush();
+            $validator = $this->get('validator');
+            $errors = $validator->validate($initiative);
 
-            $message = "Successfully saved !";
+            if (count($errors) > 0) {
+                /*
+                 * Uses a __toString method on the $errors variable which is a
+                 * ConstraintViolationList object. This gives us a nice string
+                 * for debugging.
+                 */
+                $message = (string) $errors;
+            }else{
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($initiative);
+                $em->flush();
+
+                $message = "Successfully saved !";
+            }
     	}
 
         return $this->render('AppBundle:Initiative:add_initiative.html.twig', array(

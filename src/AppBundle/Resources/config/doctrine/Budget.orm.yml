@@ -15,7 +15,7 @@ AppBundle\Entity\Budget:
             column: title
         value:
             type: float
-            nullable: true
+            nullable: false
             column: value
         startDate:
             type: date

@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Initiative
  */
@@ -18,7 +20,7 @@ class Initiative
     private $title;
 
     /**
-     * @var string
+     * @var float
      */
     private $value;
 

@@ -2,6 +2,8 @@
 
 namespace AppBundle\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Budget
  */
@@ -20,6 +22,7 @@ class Budget
 
     /**
      * @var float
+     * @Assert\NotNull()
      * @Assert\NotBlank()
      */
     private $value;
@@ -27,12 +30,14 @@ class Budget
     /**
      * @var \DateTime
      * @Assert\NotBlank()
+     * @Assert\Date()
      */
     private $startDate;
 
     /**
      * @var \DateTime
      * @Assert\NotBlank()
+     * @Assert\Date()
      */
     private $endDate;
 

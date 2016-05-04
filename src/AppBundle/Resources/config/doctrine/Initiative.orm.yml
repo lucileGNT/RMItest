@@ -14,7 +14,7 @@ AppBundle\Entity\Initiative:
             length: 255
             column: title
         value:
-            type: string
-            length: 255
+            type: float
+            nullable: false
             column: value
     lifecycleCallbacks: {  }
