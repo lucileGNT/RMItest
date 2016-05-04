@@ -53,9 +53,15 @@ class InitiativeController extends Controller
             }
     	}
 
+        //Show existing initiatives
+        $initiatives = $this->getDoctrine()
+            ->getRepository("AppBundle:Initiative")
+            ->findAll();
+
         return $this->render('AppBundle:Initiative:add_initiative.html.twig', array(
             'form' => $form->createView(),
-            'message' => isset($message) ? $message : ""
+            'message' => isset($message) ? $message : "",
+            'initiatives' => $initiatives
         ));
     }
 
