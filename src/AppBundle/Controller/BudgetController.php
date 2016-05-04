@@ -52,7 +52,7 @@ class BudgetController extends Controller
                 $em->persist($budget);
                 $em->flush();
 
-                $message = "Successfully saved !";
+                return $this->redirectToRoute('add_initiative');
             }
     	}
 
