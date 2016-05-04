@@ -14,21 +14,25 @@ class Budget
 
     /**
      * @var string
+     * @Assert\NotBlank()
      */
     private $title;
 
     /**
      * @var float
+     * @Assert\NotBlank()
      */
     private $value;
 
     /**
      * @var \DateTime
+     * @Assert\NotBlank()
      */
     private $startDate;
 
     /**
      * @var \DateTime
+     * @Assert\NotBlank()
      */
     private $endDate;
 

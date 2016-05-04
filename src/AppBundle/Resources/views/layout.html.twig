@@ -1,0 +1,17 @@
+{% extends "::base.html.twig" %}
+
+
+{% block body %}
+TEST
+{% block menu%}
+
+{% if is_granted('ROLE_USER') %}
+  
+<p>Hello {{ app.user.username }} - <a href="{{ path('add_budget') }}">Add a budget</a> - <a href="{{ path('add_initiative') }}">Add a initiative</a> - <a href="{{ path('fos_user_security_logout') }}">Logout</a></p>
+{% endif %}
+{% endblock %}
+
+
+{%block content%}{% endblock %}
+
+{% endblock %}

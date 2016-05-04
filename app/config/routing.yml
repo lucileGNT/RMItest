@@ -2,10 +2,6 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
     
-index:
-    path:     /
-    defaults: { _controller: AppBundle:Default:index }
-
 
 add_budget:
     path:     /addBudget
@@ -14,6 +10,14 @@ add_budget:
 add_initiative:
     path:     /addInitiative
     defaults: { _controller: AppBundle:Initiative:addInitiative }
+
+    # redirecting the admin home
+root:
+    path: /
+    defaults:
+        _controller: FrameworkBundle:Redirect:redirect
+        route: add_budget
+        permanent: true
 
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
