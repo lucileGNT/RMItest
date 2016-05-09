@@ -8,7 +8,7 @@ add_budget:
     defaults: { _controller: AppBundle:Budget:addBudget }
 
 add_initiative:
-    path:     /addInitiative
+    path:     /addInitiative/{idBudget}
     defaults: { _controller: AppBundle:Initiative:addInitiative }
 
     # redirecting the admin home
