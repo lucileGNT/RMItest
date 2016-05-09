@@ -16,13 +16,23 @@ class Initiative
 
     /**
      * @var string
+     * @Assert\NotBlank()
      */
     private $title;
 
     /**
      * @var float
+     * @Assert\NotBlank()
+     * @Assert\Type(
+     *     type="numeric",
+     *     message="The value {{ value }} is not a valid {{ type }}.")
      */
     private $value;
+
+    /**
+     * @var int
+     */
+    private $id_budget;
 
 
     /**
@@ -81,6 +91,30 @@ class Initiative
     public function getValue()
     {
         return $this->value;
+    }
+
+    /**
+     * Get id_budget
+     *
+     * @return int
+     */
+    public function getIdBudget()
+    {
+        return $this->id_budget;
+    }
+
+    /**
+     * Set value
+     *
+     * @param string $value
+     *
+     * @return Initiative
+     */
+    public function setIdBudget($value)
+    {
+        $this->id_budget = $value;
+
+        return $this;
     }
 }
 

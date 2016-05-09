@@ -17,4 +17,8 @@ AppBundle\Entity\Initiative:
             type: float
             nullable: false
             column: value
+        id_budget:
+            type: integer
+            nullable: false
+            column: id_budget
     lifecycleCallbacks: {  }
