@@ -22,8 +22,10 @@ class Budget
 
     /**
      * @var float
-     * @Assert\NotNull()
      * @Assert\NotBlank()
+     * @Assert\Type(
+     *     type="numeric",
+     *     message="The value {{ value }} is not a valid {{ type }}.")
      */
     private $value;
 

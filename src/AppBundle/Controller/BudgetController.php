@@ -35,25 +35,11 @@ class BudgetController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($budget);
+            $em->flush();
 
-            $validator = $this->get('validator');
-            $errors = $validator->validate($budget);
-
-            if (count($errors) > 0) {
-                /*
-                 * Uses a __toString method on the $errors variable which is a
-                 * ConstraintViolationList object. This gives us a nice string
-                 * for debugging.
-                 */
-                $message = (string) $errors;
-            }else{
-
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($budget);
-                $em->flush();
-
-                return $this->redirectToRoute('add_initiative');
-            }
+            return $this->redirectToRoute('add_initiative',array('idBudget' => $budget->getId()));
     	}
 
         return $this->render('AppBundle:Budget:add_budget.html.twig', array(
