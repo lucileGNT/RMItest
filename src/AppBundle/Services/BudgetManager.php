@@ -14,11 +14,12 @@ class BudgetManager
 
     }
 
-    public function budgetExceed(){
+    public function budgetExceed($idBudget){
         $totalBudget = $this->em
             ->createQueryBuilder()
-            ->select('sum(b.\'value\')')
+            ->select('b.\'value\'')
             ->from('AppBundle:Budget','b')
+            ->where('b.id = '.$idBudget)
             ->getQuery()
             ->getSingleScalarResult();
 
@@ -27,6 +28,7 @@ class BudgetManager
             ->createQueryBuilder()
             ->select('sum(i.\'value\')')
             ->from('AppBundle:Initiative','i')
+            ->where('i.id_budget = '.$idBudget)
             ->getQuery()
             ->getSingleScalarResult();
 

@@ -1,13 +1,13 @@
 {% extends "AppBundle:Budget:layout.html.twig" %}
 
 {% block content %}
-<h1>ADD INITIATIVE</h1>
+<h1>ADD INITIATIVE TO BUDGET {{ idBudget }}</h1>
 <p>
 	{{ form_start(form) }}
 	{{ form_widget(form) }}
 	{{ form_end(form) }}
 </p>
-
+{% if test == true %}Budget exceed !{% else %}Budget OK{% endif %}
 <h2>Current initiatives</h2>
 <p>
 	<table class="table">
