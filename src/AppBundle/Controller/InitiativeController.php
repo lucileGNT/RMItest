@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class InitiativeController extends Controller
 {
-    public function addInitiativeAction(Request $request)
+    public function addInitiativeAction($idBudget,Request $request)
     {
 
 
@@ -21,6 +21,7 @@ class InitiativeController extends Controller
         // create a task and give it some dummy data for this example
         $initiative = new Initiative();
         $initiative->setTitle('Title');
+        $initiative->setIdBudget($idBudget);
         $initiative->setValue(0);
 
         $form = $this->createFormBuilder($initiative)
@@ -33,35 +34,28 @@ class InitiativeController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $validator = $this->get('validator');
-            $errors = $validator->validate($initiative);
 
-            if (count($errors) > 0) {
-                /*
-                 * Uses a __toString method on the $errors variable which is a
-                 * ConstraintViolationList object. This gives us a nice string
-                 * for debugging.
-                 */
-                $message = (string) $errors;
-            }else{
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($initiative);
+            $em->flush();
 
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($initiative);
-                $em->flush();
-
-                $message = "Successfully saved !";
-            }
+            $message = "Successfully saved !";
     	}
 
         //Show existing initiatives
         $initiatives = $this->getDoctrine()
             ->getRepository("AppBundle:Initiative")
-            ->findAll();
+            ->findBy(array('id_budget' => $idBudget));
+
+
+        $test = $this->container->get('BudgetExceed')->budgetExceed($idBudget);
 
         return $this->render('AppBundle:Initiative:add_initiative.html.twig', array(
             'form' => $form->createView(),
             'message' => isset($message) ? $message : "",
-            'initiatives' => $initiatives
+            'initiatives' => $initiatives,
+            'test' => $test,
+            'idBudget' => $idBudget
         ));
     }
 
