@@ -15,10 +15,6 @@ class InitiativeController extends Controller
     public function addInitiativeAction($idBudget,Request $request)
     {
 
-
-    	      // replace this example code with whatever you need
-
-        // create a task and give it some dummy data for this example
         $initiative = new Initiative();
         $initiative->setTitle('Title');
         $initiative->setIdBudget($idBudget);

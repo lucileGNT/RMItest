@@ -14,9 +14,7 @@ class BudgetController extends Controller
     public function addBudgetAction(Request $request)
     {
 
-    	      // replace this example code with whatever you need
 
-        // create a task and give it some dummy data for this example
         $budget = new Budget();
         $budget->setTitle('Title');
         $budget->setValue(0);

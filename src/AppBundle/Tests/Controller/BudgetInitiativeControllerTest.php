@@ -12,9 +12,6 @@ class BudgetInitiativeControllerTest extends \PHPUnit_Framework_TestCase
 
     public function testUnit()
     {
-        //$client = static::createClient();
-
-        //$crawler = $client->request('GET', '/addBudget');
 
         $repo = new BudgetRepository();
         $date_start = new \Datetime();
