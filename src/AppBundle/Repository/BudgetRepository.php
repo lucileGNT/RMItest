@@ -2,6 +2,9 @@
 
 namespace AppBundle\Repository;
 
+use AppBundle\Entity\Budget;
+
+
 /**
  * BudgetRepository
  *
@@ -10,4 +13,18 @@ namespace AppBundle\Repository;
  */
 class BudgetRepository extends \Doctrine\ORM\EntityRepository
 {
+        public function phpUnitAddBudget($title,$value,$start_date,$end_date){
+                $budget = new Budget();
+                $budget->setTitle($title);
+                $budget->setValue($value);
+                $budget->setStartDate($start_date);
+                $budget->setEndDate($end_date);
+
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($budget);
+                $em->flush();
+
+                return $budget;
+
+        }
 }

@@ -10,4 +10,19 @@ namespace AppBundle\Repository;
  */
 class InitiativeRepository extends \Doctrine\ORM\EntityRepository
 {
+
+	public function phpUnitAddInitiative($title,$value,$id){
+
+		$initiative = new Initiative();
+        $initiative->setTitle($title);
+        $initiative->setIdBudget($id);
+        $initiative->setValue($value);
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($initiative);
+        $em->flush();
+
+        return $initiative;
+
+	}
 }
